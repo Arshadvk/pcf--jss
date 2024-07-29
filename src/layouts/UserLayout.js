@@ -1,6 +1,7 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import {  useEffect } from 'react'
+import router from 'next/router'
 
 // ** Layout Imports
 // !Do not remove this Layout import
@@ -28,7 +29,13 @@ const UserLayout = ({ children }) => {
    *  ! Do not change this value unless you know what you are doing. It can break the template.
    */
   const hidden = useMediaQuery(theme => theme.breakpoints.down('lg'))
+  useEffect(()=>{
+    
+    if (!localStorage.getItem("admin") && !localStorage.getItem("super") ){
+      router.push('/')
+    }
 
+  },[])
 
 
   return (

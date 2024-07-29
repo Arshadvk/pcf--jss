@@ -1,15 +1,12 @@
 // ** React Imports
-import { useState } from 'react'
+import {useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
 import InputLabel from '@mui/material/InputLabel'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
@@ -17,9 +14,9 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 // ** Icons Imports
 import EyeOutline from 'mdi-material-ui/EyeOutline'
-import KeyOutline from 'mdi-material-ui/KeyOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
-import LockOpenOutline from 'mdi-material-ui/LockOpenOutline'
+import axios from 'axios'
+
 
 const TabSecurity = () => {
   // ** States
@@ -33,44 +30,44 @@ const TabSecurity = () => {
   })
 
   // Handle Current Password
-  const handleCurrentPasswordChange = prop => event => {
+  const handleCurrentPasswordChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value })
   }
-
   const handleClickShowCurrentPassword = () => {
     setValues({ ...values, showCurrentPassword: !values.showCurrentPassword })
   }
-
-  const handleMouseDownCurrentPassword = event => {
+  const handleMouseDownCurrentPassword = (event) => {
     event.preventDefault()
   }
 
   // Handle New Password
-  const handleNewPasswordChange = prop => event => {
+  const handleNewPasswordChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value })
   }
-
   const handleClickShowNewPassword = () => {
     setValues({ ...values, showNewPassword: !values.showNewPassword })
   }
-
-  const handleMouseDownNewPassword = event => {
+  const handleMouseDownNewPassword = (event) => {
     event.preventDefault()
   }
 
   // Handle Confirm New Password
-  const handleConfirmNewPasswordChange = prop => event => {
+  const handleConfirmNewPasswordChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value })
   }
-
   const handleClickShowConfirmNewPassword = () => {
     setValues({ ...values, showConfirmNewPassword: !values.showConfirmNewPassword })
   }
-
-  const handleMouseDownConfirmNewPassword = event => {
+  const handleMouseDownConfirmNewPassword = (event) => {
     event.preventDefault()
   }
 
+  const handleChangePassword = (e)=> {
+     e.preventDefault()
+     if(values.newPassword === values.confirmNewPassword && values.confirmNewPassword == "")
+     axios.put("/changepassword" , {values , })
+  }
+  
   return (
     <form>
       <CardContent sx={{ paddingBottom: 0 }}>
@@ -165,42 +162,11 @@ const TabSecurity = () => {
         </Grid>
       </CardContent>
 
-      <Divider sx={{ margin: 0 }} />
 
       <CardContent>
-        <Box sx={{ mt: 1.75, display: 'flex', alignItems: 'center' }}>
-          <KeyOutline sx={{ marginRight: 3 }} />
-          <Typography variant='h6'>Two-factor authentication</Typography>
-        </Box>
-
-        <Box sx={{ mt: 5.75, display: 'flex', justifyContent: 'center' }}>
-          <Box
-            sx={{
-              maxWidth: 368,
-              display: 'flex',
-              textAlign: 'center',
-              alignItems: 'center',
-              flexDirection: 'column'
-            }}
-          >
-            <Avatar
-              variant='rounded'
-              sx={{ width: 48, height: 48, color: 'common.white', backgroundColor: 'primary.main' }}
-            >
-              <LockOpenOutline sx={{ fontSize: '1.75rem' }} />
-            </Avatar>
-            <Typography sx={{ fontWeight: 600, marginTop: 3.5, marginBottom: 3.5 }}>
-              Two factor authentication is not enabled yet.
-            </Typography>
-            <Typography variant='body2'>
-              Two-factor authentication adds an additional layer of security to your account by requiring more than just
-              a password to log in. Learn more.
-            </Typography>
-          </Box>
-        </Box>
 
         <Box sx={{ mt: 11 }}>
-          <Button variant='contained' sx={{ marginRight: 3.5 }}>
+          <Button variant='contained' onClick={(e)=> handleChangePassword(e)} sx={{ marginRight: 3.5 }}>
             Save Changes
           </Button>
           <Button
@@ -216,5 +182,4 @@ const TabSecurity = () => {
     </form>
   )
 }
-
 export default TabSecurity

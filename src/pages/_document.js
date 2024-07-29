@@ -22,11 +22,16 @@ class CustomDocument extends Document {
             rel='stylesheet'
             href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
           />
-          
+
+          <link 
+          rel='stylesheet' 
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" 
+          />
+
           <script src="https://cdn.tailwindcss.com"></script>
 
           <link rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png' />
-          <link rel='shortcut icon' href='/images/favicon.png' />
+          <link rel='shortcut icon' href='/images/favicon-32x32.png' />
         </Head>
         <body>
           <Main />

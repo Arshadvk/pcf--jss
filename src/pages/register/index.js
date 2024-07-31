@@ -1,6 +1,6 @@
 // ** React Imports
 import { Fragment,  useState } from 'react'
-
+import { storage, ref, uploadBytes, getDownloadURL } from '../../libs/firebaseConfig'; // Adjust the path as necessary
 // ** Next Imports
 import Link from 'next/link'
 
@@ -74,28 +74,32 @@ const RegisterPage = () => {
   const [panjayath, setPanjayath] = useState("")
   const [pin, setPin] = useState("")
 
-  const [file, setFile] = useState('');
+  // const [file, setFile] = useState('');
+
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [downloadURL, setDownloadURL] = useState('');
 
   const onFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
-  const onFileUpload = async () => {
-    const formData = new FormData();
-    formData.append('file', file);
+  // const onFileUpload = async () => {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
     
 
-    try {
-      const response = await axios.post('/api/post/createuser', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   try {
+  //     const response = await axios.post('/api/post/createuser', formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data'
+  //       }
+  //     });
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
 
   const handleEmiratesChange = (event) => {
@@ -107,61 +111,115 @@ const RegisterPage = () => {
 
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+    if (!file) return;
+
+
+    setUploading(true);
+
     try {
-      const address = {
-         houseName,
-         district,
-         panjayath,
-         pin
-       }
-     
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append("name" , name)
-      formData.append("email" , email)
-      formData.append("number" , number)
-      formData.append("date_of_birth" , date_of_birth)
-      formData.append("whatsapp" , whatsapp)
-      formData.append("blood" , blood)
-      formData.append("emirates" , emirates)
-      formData.append("profession" , profession)
-      formData.append("zone" , zone)
-      formData.append("address" , address)
+      const storageRef = ref(storage, `uploads/${file.name}`);
+      const snapshot = await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(snapshot.ref);
 
-      axios.post('/api/post/createuser', formData
-        , {
+      setDownloadURL(url);
+
+      const user = {
+        name , 
+        email ,
+        number ,
+        date_of_birth ,
+        whatsapp ,
+        blood ,
+        emirates ,
+        profession ,
+        image : url ,
+        address : {
+          houseName ,
+          district ,
+          panjayath ,
+          pin ,
+        }
+      }
+      // Send the download URL to backend
+      await fetch('/api/post/createuser', {
+        method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data' 
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ user }),
       }).then(() => {
-        Swal.fire({
-          title: 'Success!',
-          text: 'File uploaded successfully',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-      }).catch((error) => {
-        Swal.fire({
-          title: 'Error!',
-          text: `Error uploading file: ${error.message}`,
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-        console.error('Error uploading file:', error);
-      });
+            Swal.fire({
+              title: 'Success!',
+              text: 'File uploaded successfully',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+          }).catch((error) => {
+            Swal.fire({
+              title: 'Error!',
+              text: `Error uploading file: ${error.message}`,
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+            console.error('Error uploading file:', error);
+          });
     } catch (error) {
-
       Swal.fire({
-        title: 'Error!',
-        text: `Error uploading file: ${error}`,
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
-      console.error('Error uploading file:', error);
-      
+            title: 'Error!',
+            text: `Error uploading file: ${error}`,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+          console.error('Error uploading file:', error);
     }
-    
+
+    //   const formData = new FormData();
+    //   formData.append('file', file);
+    //   formData.append("name" , name)
+    //   formData.append("email" , email)
+    //   formData.append("number" , number)
+    //   formData.append("date_of_birth" , date_of_birth)
+    //   formData.append("whatsapp" , whatsapp)
+    //   formData.append("blood" , blood)
+    //   formData.append("emirates" , emirates)
+    //   formData.append("profession" , profession)
+    //   formData.append("zone" , zone)
+    //   formData.append("address" , address)
+
+    //   axios.post('/api/post/createuser', formData
+    //     , {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data' 
+    //     },
+    //   }).then(() => {
+    //     Swal.fire({
+    //       title: 'Success!',
+    //       text: 'File uploaded successfully',
+    //       icon: 'success',
+    //       confirmButtonText: 'OK'
+    //     });
+    //   }).catch((error) => {
+    //     Swal.fire({
+    //       title: 'Error!',
+    //       text: `Error uploading file: ${error.message}`,
+    //       icon: 'error',
+    //       confirmButtonText: 'OK'
+    //     });
+    //     console.error('Error uploading file:', error);
+    //   });
+    // } catch (error) {
+
+    //   Swal.fire({
+    //     title: 'Error!',
+    //     text: `Error uploading file: ${error}`,
+    //     icon: 'error',
+    //     confirmButtonText: 'OK'
+    //   });
+    //   console.error('Error uploading file:', error);
+      
+    // }
   };
 
   const isSmallDevice = useMediaQuery('(max-width:1000px)');

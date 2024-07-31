@@ -3,12 +3,15 @@ const { Schema } = mongoose;
 
 // Define the user schema
 const userSchema = new Schema({
+  member_id : {
+    type: Number,
+    unique: true,
+  },
   name: {
     type: String,
   },
   email: {
     type: String,
-    unique: true,
   },
   date_of_birth: {
     type: String,
@@ -34,6 +37,12 @@ const userSchema = new Schema({
   status: {
     type: String,
     default: 'pending',
+  },
+  issued : {
+    type : String
+  },
+  expiry:{
+    type : String
   },
   image: {
     type: String,

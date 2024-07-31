@@ -12,7 +12,9 @@ const ImgStyled = styled('img')(({}) => ({
   marginTop: '10px',
   marginRight: '0.3cm',
   border: '5px solid white',
-  borderRadius: '17px'
+  borderRadius: '17px' ,
+  crossOrigin: 'anonymous' // Added crossOrigin attribute
+
 }))
 
 const IdCard = styled('div')(() => ({
@@ -34,6 +36,7 @@ const UserRequests = () => {
   const router = useRouter()
   const { id } = router.query
   const [data, setData] = useState(null)
+  const [imgSrc , setImg] = useState('/images/avatars/img1.jpg')
 
   useEffect(() => {
     if (id) {
@@ -41,23 +44,24 @@ const UserRequests = () => {
         .get(`/api/userid/${id}`)
         .then(response => {
           setData(response.data)
+          setImg("https://maxhomeproperty.com/assets/team/maria.webp")
         })
         .catch(error => {
           console.error('Error fetching data:', error)
         })
     }
+    
   }, [id])
 
-  const [imgSrc] = useState('/images/avatars/img1.jpg')
 
   const saveAsImage = () => {
     const element = document.getElementById('cardContainer')
 
     if (element) {
-      html2canvas(element).then(canvas => {
-        const imgData = canvas.toDataURL('image/png')
+      html2canvas(element, { useCORS: true }).then(canvas => { // Added useCORS option
+        const imgData = canvas.toDataURL('image/jpeg')
         const link = document.createElement('a')
-        link.download = 'cardImage.png'
+        link.download = 'cardImage.jpeg'
         link.href = imgData
         link.click()
       })
@@ -92,32 +96,37 @@ const UserRequests = () => {
                 </Grid>
               </Grid>
 
-                <Grid marginLeft={4} marginTop={1}>
+                <Grid >
                   <Typography variant='h6' style={{ fontWeight: 'bold', color: 'black', fontSize: '10px' , textAlign: "center" }}>
                     {data?.name}
                   </Typography>
-                  <Typography variant='h6' style={{ fontWeight: 'bold', color: 'black', fontSize: '10px' ,  textAlign: "center"  }}>
+                  <Typography variant='h6' style={{ color: 'black', fontSize: '10px' ,  textAlign: "center"  }}>
                     {data?.whatsapp}
+                  </Typography> 
+                  <Typography variant='h6' style={{ fontWeight: 'bold', color: '#ECC36E', fontSize: '10px' ,  textAlign: "center"  }}>
+                    M.NO :   AUH-605
                   </Typography>
+                  
+                 <Typography variant='h6' style={{ color: '#', fontSize: '10px' ,  textAlign: "center"  }}>
+                    {/* Mandalam :  {data?.address?.panjayath} */}
+                    Mandalam : Pattambi
+                  </Typography> 
+
+                 <Typography variant='h6' style={{ color: '#', fontSize: '10px' ,  textAlign: "center"  }}>
+                    {/* District :   {data?.address?.district} */}
+                    District :  Palakkad
+                  </Typography> 
                 </Grid>
 
-              <Grid container spacing={3}>
-                <Grid item xs={6} paddingLeft={10}></Grid>
-                <Grid xs={6}>
-                  <Grid container direction='column' paddingLeft={8} paddingTop={9}>
-                    <Typography fontSize={20} style={{ color: 'black', fontSize: '8px' }}>
-                      AUH.701
-                    </Typography>
-                    <Typography fontSize={17} style={{ color: 'black', fontSize: '8px' }}>
-                      GURUVAYOOR
-                    </Typography>
+                <div className='flex justify-between items-end'>
+                  <p className='text-[8px] pt-2 pl-3'>
+                    Issued : 30/03/2023 
+                  </p>
+                  <p className='text-[8px] pt-2 pr-3'>
+                    Expiry : 30/03/2023 
+                  </p>
+                </div>
 
-                    <Typography fontSize={17} style={{ color: 'black', fontSize: '8px' }}>
-                      {data?.address?.district}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
             </IdCard>
           </div>
           <Button variant='contained' style={{ margin: '15px' }} onClick={saveAsImage}>

@@ -1,76 +1,73 @@
 // pages/api/post/createuser.js
-import formidable from 'formidable';
-import fs from 'fs';
-import path from 'path';
-import connectMongoDB from "src/libs/database";
-import  userModel  from "src/models/user";
-
+import connectMongoDB from 'src/libs/database'
+import userModel from 'src/models/user'
+import Counter from 'src/models/counter' // Import the counter model
 
 export const config = {
   api: {
-    bodyParser: false,
-  },
-};
-
-const uploadDir = path.join(process.cwd(), '/public/uploads');
-
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+    bodyParser: true
+  }
 }
 
 const handler = async (req, res) => {
-  const form = formidable({
-    uploadDir,
-    keepExtensions: true,
-    multiples: false,
-  });
+  function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const year = date.getFullYear()
+    return `${day}-${month}-${year}`
+  }
 
   try {
-    const { fields, files } = await new Promise((resolve, reject) => {
-      form.parse(req, (err, fields, files) => {
-        if (err) reject(err);
-        else resolve({ fields, files });
-      });
-    });
+    // Connect to MongoDB
+    await connectMongoDB()
 
-    if (!files || Object.keys(files).length === 0) {
-      return res.status(400).json({ error: 'No files were uploaded.' });
-    }
+    const user = req.body.user
 
-    const fileKey = Object.keys(files)[0];
-    const file = files[fileKey];
+    // Get the current date
+    const now = new Date()
 
-    
+    // Set the current date
+    user.issued = now
 
-    if (!file) {
-      return res.status(400).json({ error: 'File not found.' });
-    }
+    // Set the expiry date to 2 years from now
+    const expiryDate = new Date()
+    expiryDate.setFullYear(now.getFullYear() + 2)
+    user.expiry = expiryDate
 
-     // Extract additional form fields
-    const { name, email, number } = fields;
+    // Format dates
+    const formattedIssuedDate = formatDate(user.issued)
+    const formattedExpiryDate = formatDate(user.expiry)
 
-    connectMongoDB();
+    // Log formatted dates
+    console.log('Current Date:', formattedIssuedDate)
+    console.log('Expiry Date:', formattedExpiryDate)
 
-    const  user =  {
-      name : name[0] ,
-      email : email[0] ,
-      image : file[0]?.newFilename
-    }
-    userModel.create(user)
-    // Perform any necessary processing with the received data
-    console.log("File uploaded successfully");
+    // Assign formatted dates to user object
+    user.issued = formattedIssuedDate
+    user.expiry = formattedExpiryDate
 
-    
+    // Get the next member_id
+    const counter = await Counter.findOneAndUpdate(
+      { _id: 'member_id' },
+      { $inc: { count: 1 } },
+      { new: true, upsert: true } // Create if not exists
+    )
+
+    user.member_id = counter.count
+
+    console.log(user)
+
+    // Create the user
+    const Newuser = await userModel.create(user)
+    console.log(Newuser)
+
     res.status(200).json({
-      message: 'File uploaded successfully',
-      name,
-      email,
-      number,
-    });
+      message: 'User created successfully'
+    })
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'File upload failed' });
+    console.error(error)
+    res.status(500).json({ error: 'Internal Server Error' })
   }
-};
+}
 
-export default handler;
+export default handler

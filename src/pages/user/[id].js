@@ -104,26 +104,26 @@ const UserRequests = () => {
                     {data?.whatsapp}
                   </Typography> 
                   <Typography variant='h6' style={{ fontWeight: 'bold', color: '#ECC36E', fontSize: '10px' ,  textAlign: "center"  }}>
-                    M.NO :   AUH-605
+                    M.NO :  {data?.emirates === "Abu Dhabi" ? "AUH-" : data?.emirates === "Dubai" ? "DXB-" : data?.emirates === "Sharjah"  ? "SHJ-" : data?.emirates === "Ajman" ? "AJM-" : data?.emirates === "Ras Al Khaimah" ? "RAK-" : data?.emirates === "Fujairah"  ? "FUJ-" : "UAQ-"} {data?.member_id}
                   </Typography>
                   
                  <Typography variant='h6' style={{ color: '#', fontSize: '10px' ,  textAlign: "center"  }}>
-                    {/* Mandalam :  {data?.address?.panjayath} */}
-                    Mandalam : Pattambi
+                    Mandalam :  {data?.address?.panjayath}
+                    {/* Mandalam : Pattambi */}
                   </Typography> 
 
                  <Typography variant='h6' style={{ color: '#', fontSize: '10px' ,  textAlign: "center"  }}>
-                    {/* District :   {data?.address?.district} */}
-                    District :  Palakkad
+                    District :   {data?.address?.district}
+                    {/* District :  {data?.address?.district} */}
                   </Typography> 
                 </Grid>
 
                 <div className='flex justify-between items-end'>
                   <p className='text-[8px] pt-2 pl-3'>
-                    Issued : 30/03/2023 
+                    Issued : {data?.issued}
                   </p>
                   <p className='text-[8px] pt-2 pr-3'>
-                    Expiry : 30/03/2023 
+                    Expiry : {data?.expiry}
                   </p>
                 </div>
 

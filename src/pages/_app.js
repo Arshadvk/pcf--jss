@@ -52,16 +52,16 @@ const App = props => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>{`${themeConfig.templateName} - Material Design React Admin Template`}</title>
+        <title>{`${themeConfig.templateName}`}</title>
         <meta
           name='description'
-          content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
+          content={`People's Cultural Forum (PCF) is the diaspora wing of the People's Democratic Party (PDP), led by Abdul Nasser Madani. We are a unified organization operating across the GCC countries, including the UAE, dedicated to addressing the diverse issues faced by the expatriate community. Our formation stemmed from the principles of 'oppressed party politics' championed by Abdul Nasser Madani. Post-2000, our independent chapters in the GCC countries merged to form the PCF, which has since been recognized as the official diaspora organization of the PDP. Our members consist of expatriate PDP activists and service-minded citizens who are deeply committed to the vision and leadership of Chairman Abdul Nasser Madani. Together, we strive to make a meaningful impact on the lives of our community members, advocating for their rights and welfare.`}
         />
         <link href="https://fonts.googleapis.com/css2?family=Chilanka:wght@400;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&display=swap" rel="stylesheet" />
 
         
-        <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
+        <meta name='keywords' content='pcf , people culture forum , peoplecultureforum.ae , pdp uae , uae pdp , pcf uae , uae pcf ,Peoples Democratic Party (PDP)' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
 

@@ -44,7 +44,7 @@ const UserRequests = () => {
         .get(`/api/userid/${id}`)
         .then(response => {
           setData(response.data)
-          setImg("https://maxhomeproperty.com/assets/team/maria.webp")
+          setImg(response?.data?.image)
         })
         .catch(error => {
           console.error('Error fetching data:', error)

@@ -64,8 +64,31 @@ const TabSecurity = () => {
 
   const handleChangePassword = (e)=> {
      e.preventDefault()
-     if(values.newPassword === values.confirmNewPassword && values.confirmNewPassword == "")
-     axios.put("/changepassword" , {values , })
+     if(values.newPassword === values.confirmNewPassword && values.confirmNewPassword !== ""){
+       const token = localStorage.getItem("admin") ?? localStorage.getItem("super")
+       values.token = token
+       axios.post("/api/changepassword" , values , {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then(()=>{
+        Swal.fire({
+          title: 'Success!',
+          text: 'Password Chanced Successfully',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      }).catch((error) => {
+        Swal.fire({
+          title: 'Error!',
+          text: `Error: ${error.message}`,
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+        console.error('Error uploading file:', error);
+      })
+     }
+
   }
   
   return (

@@ -41,7 +41,7 @@ async function loginHandler(req, res) {
     const token = jwt.sign(
       { id: admin._id, email: admin.email , name : admin.name ,emirates : admin?.emirates},
       JWT_SECRET,
-      { expiresIn: "1h" } // Token expires in 1 hour
+      { expiresIn: "2m" } // Token expires in 1 hour
     );
 
     // Respond with the admin data (excluding the password) and token

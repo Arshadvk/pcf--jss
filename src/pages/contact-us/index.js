@@ -90,6 +90,21 @@ const onSubmit = async  (event) => {
                 label='Email'
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
+              />
+               <TextField sx={{marginY:2}}
+                fullWidth
+                type='number'
+                label='Number'
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder='Enter Your Number'
+              />
+               <TextField sx={{marginY:2}}
+                fullWidth
+                type='number'
+                label='Number'
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
                 placeholder='Enter Your Number'
               />
             </Grid>

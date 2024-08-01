@@ -9,6 +9,7 @@ import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
+import TextareaAutosize from '@mui/material/TextareaAutosize'
 import CardHeader from '@mui/material/CardHeader'
 import InputLabel from '@mui/material/InputLabel'
 import IconButton from '@mui/material/IconButton'
@@ -36,7 +37,7 @@ const HomePage = () => {
 const [name , setName] = useState("")
 const [email , setEmail] = useState("")
 const [number , setNumber] = useState("")
-const [emirates, setEmirates] = useState(null)
+const [message, setMessage] = useState(null)
 
 
 const handleChange = (prop ) => (event) => {
@@ -55,15 +56,14 @@ const handleMouseDownPassword = (event) => {
 
 const onSubmit = async  (event) => {
   event.preventDefault()
-  const admin = {
+  const message = {
     name , 
     email ,
     number ,
-    emirates , 
-    password : values.password
+    message , 
   }
   console.log(admin)
-  axios.post('/api/post/create-admin' , admin, {
+  axios.post('/api/post/' , message, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -95,17 +95,16 @@ const onSubmit = async  (event) => {
                 fullWidth
                 type='number'
                 label='Number'
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
+                value={number}
+                onChange={(e)=>setNumber(e.target.value)}
                 placeholder='Enter Your Number'
               />
-               <TextField sx={{marginY:2}}
+               <TextareaAutosize sx={{marginY:2}}
                 fullWidth
-                type='number'
-                label='Number'
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
-                placeholder='Enter Your Number'
+                type='text'
+                label='message'
+                value={message}
+                onChange={(e)=>setMessage(e.target.value)}
               />
             </Grid>
            

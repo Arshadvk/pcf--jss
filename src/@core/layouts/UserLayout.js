@@ -150,12 +150,13 @@ const UserLayout = ({ children }) => {
           <div className="text-center lg:text-left mb-10 lg:mb-0">
             <h4 className="font-semibold text-gray-900 md:text-xl mb-6">Contact</h4>
             
-            <a href="tel:+971508541015" className="block font-light text-gray-400 text-xs mb-3 hover:text-gray-800 transition ease-in-out duration-300">
-              050 308 30607
+            <a href="tel:+971502144469" className="block font-light text-gray-400 text-xs mb-3 hover:text-gray-800 transition ease-in-out duration-300">
+              050 214 4469
+            </a> 
+            <a href="tel:+971502144469" className="block font-light text-gray-400 text-xs mb-3 hover:text-gray-800 transition ease-in-out duration-300">
+              050 214 4469
             </a>
-            <a href="tel:+971508541015" className="block font-light text-gray-400 text-xs mb-3 hover:text-gray-800 transition ease-in-out duration-300">
-              050 308 30607
-            </a>
+            
           </div>
 
           <div className="text-center lg:text-left">

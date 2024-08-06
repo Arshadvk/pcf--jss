@@ -15,12 +15,10 @@ const HomePage = () => {
           <div>
 
             <p className='text-xs font-bold mb-3' style={{ textTransform: "uppercase", }}> Who we are ? </p>
-            <h1 className='text-black font-bold mb-2' style={{ textTransform: "uppercase", }}>PCF (People's Cultural Forum)</h1>
+            <h1 className='text-black font-bold mb-2' style={{  fontFamily: "Manjari" , textTransform: "uppercase", }}>പി.സി.എഫ് (പീപ്പിൾസ് കൾച്ചറൽ ഫോറം)</h1>
 
-            <p className='text-sm font-extrabold text-black' style={{ fontFamily: "Manjari" }}>
-              The People's Cultural Forum (PCF) is the diaspora wing of the People's Democratic Party (PDP), led by Abdul Nasser Madani. We are a unified organization operating across the GCC countries, including the UAE, dedicated to addressing the diverse issues faced by the expatriate community. Our formation stemmed from the principles of 'oppressed party politics' championed by Abdul Nasser Madani. Post-2000, our independent chapters in the GCC countries merged to form the PCF, which has since been recognized as the official diaspora organization of the PDP.
-
-              Our members consist of expatriate PDP activists and service-minded citizens who are deeply committed to the vision and leadership of Chairman Abdul Nasser Madani. Together, we strive to make a meaningful impact on the lives of our community members, advocating for their rights and welfare.
+            <p className='text-sm font-extrabold text-black w-80' style={{ fontFamily: "Manjari" }}>
+            അബ്ദുൾ നാസർ മഅ്ദനി അധ്യക്ഷനായ പീപ്പിൾസ് ഡെമോക്രാറ്റിക് പാർട്ടിയുടെ (പിഡിപി) പ്രവാസി സംഘടനയാണ് പിസിഎഫ് .അബ്ദുൾ നാസർ മഅ്ദനി മുന്നോട്ടുവെച്ച 'മർദ്ദിതപക്ഷ രാഷ്ട്രീയ'ത്തിന്റെ ചുവട് പിടിച്ച്; പ്രവാസി സമൂഹം നേരിടുന്ന വിവിധങ്ങളായ പ്രശ്നങ്ങൾ ഏറ്റെടുത്തു കൊണ്ടാണ് യുഎഇയിൽ ഉൾപ്പടെ മറ്റെല്ലാ ജിസിസി നാടുകളിലും പി.സി.എഫ്. പ്രവർത്തിക്കുന്നത്
             </p>
           </div>
         </div>
@@ -31,16 +29,10 @@ const HomePage = () => {
           <div>
 
             <p className='text-xs font-bold mb-3' style={{ textTransform: "uppercase", }}> Our Vision  </p>
-            <h1 className='text-black font-bold mb-2' style={{ textTransform: "uppercase", }}>PCF (People's Cultural Forum)</h1>
 
-            <p className='text-sm font-extrabold text-black' style={{ fontFamily: "Manjari" }}>
-              Our vision is to create a supportive and empowered expatriate community in the GCC countries, inspired by the principles of justice and equality promoted by Abdul Nasser Madani. We aim to:
-
-              Through our collective efforts, we aspire to build a vibrant and resilient expatriate community that upholds the ideals of justice, equality, and cultural unity.
+            <p className='text-sm font-extrabold text-black  w-80' style={{ fontFamily: "Manjari" }}>
+            അബ്ദുൾ നാസർ മഅ്ദനി മുന്നോട്ടുവെച്ച 'മർദ്ദിതപക്ഷ രാഷ്ട്രീയ'ത്തിന്റെ ചുവട് പിടിച്ച്; പ്രവാസി സമൂഹം നേരിടുന്ന വിവിധങ്ങളായ പ്രശ്നങ്ങൾ ഏറ്റെടുത്തു കൊണ്ടാണ് യുഎഇയിൽ ഉൾപ്പടെ മറ്റെല്ലാ ജിസിസി നാടുകളിലും പി.സി.എഫ്. പ്രവർത്തിക്കുന്നത്
             </p>
-            <p className='text-sm font-extrabold text-black' style={{ fontFamily: "Manjari" }}>   1) Address Expatriate Challenges: Actively engage with and resolve the various problems faced by the expatriate community, ensuring their voices are heard and their needs met.</p>
-
-            <p className='text-sm font-extrabold text-black' style={{ fontFamily: "Manjari" }}> 2) Promote Cultural Unity: Foster a sense of solidarity and cultural pride among expatriates, celebrating our shared heritage and values. </p>
 
           </div>
         </div>
@@ -57,10 +49,8 @@ const HomePage = () => {
         <div className='flex items-center justify-center p-8'>
           <div>
 
-            <p className='text-sm font-extrabold text-black mb-2' style={{ fontFamily: "Manjari" }}>  3) Advocate for Rights: Stand up for the rights and welfare of expatriates, working towards equitable treatment and opportunities for all.</p>
-            <p className='text-sm font-extrabold text-black mb-2' style={{ fontFamily: "Manjari" }}>  4) Community Support: Provide support and resources to expatriates, enhancing their quality of life and helping them navigate the challenges of living abroad.</p>
-            <p className='text-sm font-extrabold text-black mb-2' style={{ fontFamily: "Manjari" }}>  5) Sustain Organizational Growth: Continue to expand our reach and effectiveness, strengthening our presence and impact across the GCC countries.
-            </p>
+            <p className='text-sm font-extrabold text-black mb-2 w-80' style={{ fontFamily: "Manjari" }}>പ്രവാസികളായ പിഡിപി പ്രവർത്തകരുടെയും ചെയർമാൻ അബ്ദുൾനാസർ മഅദനിയെ സ്നേഹിക്കുന്ന സേവന മനോഭാവമുള്ള നിരവധി അഭ്യുതകാംശികളുടെയും കൂട്ടായ പരിശ്രമത്തിന്റെ ഫലമായി യു.എ.ഇ അടക്കമുള്ള ജിസിസി രാജ്യങ്ങളിലെ സജീവ സംഘടനകളിലൊന്നായി നിലവിൽ പി.സി.എഫ് അഥവാ പീപ്പിൾസ് കൾച്ചറൽ ഫോറം പ്രവർത്തിച്ചുകൊണ്ടിരിക്കുന്നു. </p>
+           
 
           </div>
         </div>

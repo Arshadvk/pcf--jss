@@ -58,7 +58,7 @@ const UserLayout = ({ children }) => {
               className='bg-red-500 text-white p-2 px-4 font-bold rounded cursor-pointer text-xs'
               onClick={() => router.push('/register')}
             >
-              Join Us
+              Member Ship
             </a>
             <button
               className="lg:hidden w-10 h-10 ml-auto flex transition items-center justify-center nav-button border bg-black border-blue-700 rounded-md"
@@ -95,7 +95,7 @@ const UserLayout = ({ children }) => {
               className='bg-red-500 text-white p-2 px-4 font-bold rounded cursor-pointer text-xs'
               onClick={() => router.push('/register')}
             >
-              Join Us
+              Member Ship
             </a>
           </div>
         </nav>
@@ -112,7 +112,7 @@ const UserLayout = ({ children }) => {
             <img src="/images/logos/pcf.png" className='h-10 md:h-20' alt="" />
             </div>
             <div className="flex items-center justify-center lg:justify-start space-x-5">
-              <a href=""
+              <a href="https://www.facebook.com/profile.php?id=100064894413911&mibextid=LQQJ4d"
                 className="px-3 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-blue-800 hover:text-white transition ease-in-out duration-500">
                 <i class="bi bi-facebook"></i>
               </a>

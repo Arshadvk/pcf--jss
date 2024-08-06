@@ -5,132 +5,96 @@ import { useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
-import TextareaAutosize from '@mui/material/TextareaAutosize'
-import CardHeader from '@mui/material/CardHeader'
-import InputLabel from '@mui/material/InputLabel'
-import IconButton from '@mui/material/IconButton'
-import CardContent from '@mui/material/CardContent'
-import FormControl from '@mui/material/FormControl'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import InputAdornment from '@mui/material/InputAdornment'
-import Select from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
-
-
-// ** Icons Imports
-import EyeOutline from 'mdi-material-ui/EyeOutline'
-import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 import axios from 'axios'
 
 
 const HomePage = () => {
- // ** States
- const [values, setValues] = useState({
-  password: '',
-  showPassword: false
-})
 
-const [name , setName] = useState("")
-const [email , setEmail] = useState("")
-const [number , setNumber] = useState("")
-const [message, setMessage] = useState(null)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [number, setNumber] = useState("")
+  const [message, setMessage] = useState("")
 
-
-const handleChange = (prop ) => (event) => {
-  setValues({ ...values, [prop]: event.target.value })
-}
-const handleEmiratesChange = (event) => {
-  setEmirates(event.target.value);
-}
-const handleClickShowPassword = () => {
-  setValues({ ...values, showPassword: !values.showPassword })
-}
-
-const handleMouseDownPassword = (event) => {
-  event.preventDefault()
-}
-
-const onSubmit = async  (event) => {
-  event.preventDefault()
-  const message = {
-    name , 
-    email ,
-    number ,
-    message , 
-  }
-  console.log(admin)
-  axios.post('/api/post/' , message, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then((res) => {
+  const onSubmit = async (event) => {
+    event.preventDefault()
+    const messageData = {
+      name,
+      email,
+      number,
+      message
+    }
+    console.log(messageData)
+    axios.post('/api/post/', messageData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
       alert(res.data);
     })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
-}
+  }
+
   return (
     <div className='flex items-center justify-center p-10'>
-     
-      
-        <form onSubmit={e => e.preventDefault()}>
-          <Grid container spacing={5}>
-            <Grid item xs={12} md={7} >
-              <TextField fullWidth sx={{marginY:2}} label='Name' value={name} onChange={(e)=>setName(e.target.value)} placeholder='Enter Your Name' />
+      <form onSubmit={onSubmit}>
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={7}>
+            <TextField fullWidth sx={{ marginY: 2 }} label='Name' value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Your Name' />
 
-              <TextField sx={{marginY:2}}
-                fullWidth
-                type='email'
-                label='Email'
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
-              />
-               <TextField sx={{marginY:2}}
-                fullWidth
-                type='number'
-                label='Number'
-                value={number}
-                onChange={(e)=>setNumber(e.target.value)}
-                placeholder='Enter Your Number'
-              />
-               <TextareaAutosize sx={{marginY:2}}
-                fullWidth
-                type='text'
-                label='message'
-                value={message}
-                onChange={(e)=>setMessage(e.target.value)}
-              />
-            </Grid>
-           
-  
-            <Grid item xs={12}>
-              <Box
-                sx={{
-                  gap: 5,
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
-                }}
-              >
-                <Button onClick={(e) => onSubmit(e)} type='submit' variant='contained' size='large'>
-                  Send Message 
-                </Button>
-              </Box>
-            </Grid>
+            <TextField sx={{ marginY: 2 }}
+              fullWidth
+              type='email'
+              label='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextField sx={{ marginY: 2 }}
+              fullWidth
+              type='number'
+              label='Number'
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+              placeholder='Enter Your Number'
+            />
+            <TextField
+              fullWidth
+              multiline
+              minRows={4}
+              sx={{ marginY: 2 }}
+              label='Message'
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder='Enter Your Message'
+            />
           </Grid>
-        </form>
-      
-   
+
+          <Grid item xs={12}>
+            <Box
+              sx={{
+                gap: 5,
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}
+            >
+              <Button type='submit' variant='contained' size='large'>
+                Send Message
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </form>
+
     </div>
   )
-} 
+}
 
 HomePage.getLayout = (page) => <UserLayout>{page}</UserLayout>
 

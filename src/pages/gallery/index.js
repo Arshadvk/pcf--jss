@@ -6,7 +6,7 @@ const HomePage = () => {
   const photo = [1,2,3, 4,5,6,7,8,9]
 
   return (
-    <div className=' grid grid-cols md:grid-cols-3 xl:grid-cols-4'>
+    <div className='mt-5 grid grid-cols md:grid-cols-3 xl:grid-cols-4'>
        {photo.map((photo)=>{
         return (
             // eslint-disable-next-line react/jsx-key

@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <div>
       <div
-        className='grid grid-cols-2 lg:grid-cols-3 h-[25vh] md:h-[60vh]'
+        className='grid grid-cols-2 lg:grid-cols-3 h-[25vh] md:h-[70vh] xl:h-[80vh]'
         style={{
           backgroundImage: `url(/images/home/bg.jpg)`,
           backgroundSize: 'cover',

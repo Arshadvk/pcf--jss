@@ -34,14 +34,14 @@ const UserLayout = ({ children }) => {
     const router = useRouter()
  
     const isActive = (path) => {
-        return router.pathname === path ? 'text-black' : 'text-gray-400 hover:text-gray-900';
+        return router.pathname === path ? 'text-black' : 'text-white hover:text-gray-900';
       }
 
   return (
     <BlankLayoutWrapper className='layout-wrapper'>
       <Box className='app-content' sx={{ minHeight: '100vh', overflowX: 'hidden', position: 'relative' }}>
 
-      <section className="bg-white">
+      <section className="bg-[#058536]">
       <div className="container max-w-screen-xl mx-auto px-4">
         <nav className="flex-wrap lg:flex items-center py-1 md:py-5 xl:relative z-10">
           <div className="flex items-center justify-between">
@@ -76,7 +76,7 @@ const UserLayout = ({ children }) => {
             <li className="font-semibold text-gray-500 text-lg nav-link transition ease-in-out duration-300 mb-5 lg:mb-0">
             <p className={`${isActive('/gallery')} cursor-pointer`} onClick={() => router.push('/gallery')}>Events</p>
             </li>
-            <li className="font-semibold text-gray-500 text-lg nav-link transition ease-in-out duration-300 mb-5 lg:mb-0">
+            <li className="font-semibold  text-lg nav-link transition ease-in-out duration-300 mb-5 lg:mb-0">
             <p className={`${isActive('/about-us')} cursor-pointer`} onClick={() => router.push('/about-us')}>About Us</p>
             </li>
             <li className="font-semibold text-gray-500 text-lg nav-link transition ease-in-out duration-300 mb-5 lg:mb-0">

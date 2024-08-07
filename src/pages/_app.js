@@ -61,7 +61,7 @@ const App = props => {
         <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&display=swap" rel="stylesheet" />
 
         
-        <meta name='keywords' content='pcf , people culture forum , peoplecultureforum.ae , pdp uae , uae pdp , pcf uae , uae pcf ,Peoples Democratic Party (PDP)' />
+        <meta name='keywords' content='pcf , people culture forum , peopleculturalforum.ae , pdp uae , uae pdp , pcf uae , uae pcf ,Peoples Democratic Party (PDP)' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
 

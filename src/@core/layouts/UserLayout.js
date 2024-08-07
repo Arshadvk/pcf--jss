@@ -168,10 +168,10 @@ const UserLayout = ({ children }) => {
         </div>
 
         <p className="text-center text-xs text-gray-500">
-          Copyright © 2024 peoples culture forum. All rights reserved.
+          Copyright © 2024 people cultural forum. All rights reserved.
         </p>
         <p className="text-center text-xs text-gray-500 mt-1">
-          Made by <a href="https://maxhomeproperty.com" target="_blank" rel="noopener" className="hover:underline">arshadvk7560@gmail.com</a>
+          Made by <a href="https://arshadvk.vercel.app" target="_blank" rel="noopener" className="hover:underline">arshadvk7560@gmail.com</a>
         </p>
       </div>
     </footer>

@@ -16,7 +16,7 @@ const FooterContent = () => {
         </Box>
         {` by `}
         <Link target='_blank' href='https://themeselection.com/'>
-         people culture forum
+         people cultural forum
         </Link>
       </Typography>
    

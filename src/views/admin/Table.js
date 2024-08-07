@@ -17,7 +17,6 @@ const TableAdmin = ({data}) => {
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Emirates</TableCell>
-            <TableCell>Veiw</TableCell>
         
           </TableRow>
         </TableHead>
@@ -36,8 +35,6 @@ const TableAdmin = ({data}) => {
               </TableCell>
               <TableCell >{row.email}</TableCell>
               <TableCell >{row.emirates}</TableCell>
-              <TableCell className='cursor-pointer'>details</TableCell>
-
             </TableRow>
           ))}
         </TableBody>

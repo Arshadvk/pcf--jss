@@ -31,7 +31,11 @@ const handler = async (req, res) => {
 
     // Set the expiry date to 2 years from now
     const expiryDate = new Date()
-    expiryDate.setFullYear(now.getFullYear() + 2)
+    if(user?.memberShip === "p"){
+      expiryDate.setFullYear(now.getFullYear() + 2)
+    }else{
+      expiryDate.setFullYear(now.getFullYear() + 1)
+    }
     user.expiry = expiryDate
 
     // Format dates

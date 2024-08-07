@@ -7,6 +7,9 @@ const userSchema = new Schema({
     type: Number,
     unique: true,
   },
+  membership_type :{
+    type: String,
+  }, 
   name: {
     type: String,
   },

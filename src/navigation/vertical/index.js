@@ -23,11 +23,6 @@ const useNavigation = () => {
       path: '/user/requests',
     },
     {
-      title: 'User Register',
-      icon: AccountPlus,
-      path: '/user/register',
-    },
-    {
       title: 'Profile',
       icon: AccountCogOutline,
       path: '/profile'

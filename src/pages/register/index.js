@@ -65,6 +65,7 @@ const RegisterPage = () => {
 
   const [blood, setBlood] = useState("")
   const [emirates, setEmirates] = useState("")
+  const [memberShip, setMemberShip] = useState("")
   const [profession, setProfession] = useState("")
   const [zone, setZone] = useState("")
 
@@ -105,6 +106,9 @@ const RegisterPage = () => {
   const handleEmiratesChange = (event) => {
     setEmirates(event.target.value);
   };
+  const handleMemberShipChange = (event) => {
+    setMemberShip(event.target.value);
+  };
   const handleBloodChange = (event) => {
     setBlood(event.target.value);
   };
@@ -132,6 +136,7 @@ const RegisterPage = () => {
         date_of_birth ,
         whatsapp ,
         blood ,
+        memberShip ,
         emirates ,
         profession ,
         image : url ,
@@ -337,6 +342,21 @@ const RegisterPage = () => {
                 <TextField fullWidth type='text' value={zone} onChange={e => setZone(e.target.value)} label='Zone/Area' />
               </Grid>
 
+              <Grid item xs={12} sm={6} >
+                <FormControl fullWidth>
+                  <InputLabel id='form-layouts-separator-select-label'>Membership Type</InputLabel>
+                  <Select
+                    label='Membership Type'
+                    value={memberShip}
+                    onChange={handleMemberShipChange}
+                    id='form-layouts-separator-select'
+                    labelId='form-layouts-separator-select-label'
+                  >
+                    <MenuItem value='p'>Primary</MenuItem>
+                    <MenuItem value='s'>Secondary</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
 
 
 
@@ -363,6 +383,22 @@ const RegisterPage = () => {
               <Grid item xs={12} sm={6}>
                 <TextField fullWidth label='Legislative assembly' placeholder='' />
               </Grid>
+
+              <Grid item xs={12} sm={6} >
+                <FormControl fullWidth>
+                  <InputLabel id='form-layouts-separator-select-label'>Membership Type</InputLabel>
+                  <Select
+                    label='Membership Type'
+                    
+                    id='form-layouts-separator-select'
+                    labelId='form-layouts-separator-select-label'
+                  >
+                    <MenuItem value='p'>Primary</MenuItem>
+                    <MenuItem value='s'>Secondary</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              
               <Grid item xs={12} sm={6}>
                 <TextField fullWidth label='Before in PDP' placeholder='Yes / No' />
               </Grid>

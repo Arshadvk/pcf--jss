@@ -386,22 +386,19 @@ const RegisterPage = () => {
 
               <Grid item xs={12} sm={6} >
                 <FormControl fullWidth>
-                  <InputLabel id='form-layouts-separator-select-label'>Membership Type</InputLabel>
+                  <InputLabel id='form-layouts-separator-select-label'>Before in PDP</InputLabel>
                   <Select
-                    label='Membership Type'
+                    label='Before in PDP'
                     
                     id='form-layouts-separator-select'
                     labelId='form-layouts-separator-select-label'
                   >
-                    <MenuItem value='p'>Primary</MenuItem>
-                    <MenuItem value='s'>Secondary</MenuItem>
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              
-              <Grid item xs={12} sm={6}>
-                <TextField fullWidth label='Before in PDP' placeholder='Yes / No' />
-              </Grid>
+     
             </Grid>
             <FormControlLabel
               control={<Checkbox />}

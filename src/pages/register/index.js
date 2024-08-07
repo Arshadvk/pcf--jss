@@ -381,7 +381,7 @@ const RegisterPage = () => {
                 <TextField fullWidth label='PIN' value={pin} onChange={e => setPin(e.target.value)} />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField fullWidth label='Legislative assembly' placeholder='' />
+                <TextField fullWidth label='Mandalam (Legislative assembly)' placeholder='' />
               </Grid>
 
               <Grid item xs={12} sm={6} >
